@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="BuildingBase" Abstract="True">
+		<category>Building</category>
+		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>BuildingRubble</filthLeaving>
+	</ThingDef>
+
+	<!--Vent From Better Vents, Made Abstract -->
+	<ThingDef ParentName="BuildingBase" Name="BetterVentBase" Abstract="True">
+		<defName>Vent</defName>
+		<label>vent</label>
+		<thingClass>Building_Vent</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Misc/TempControl/VentB</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+		</graphicData>
+		<altitudeLayer>PawnUnused</altitudeLayer>
+		<passability>Impassable</passability>
+		<fillPercent>0.99</fillPercent>
+		<coversFloor>true</coversFloor>
+		<blockLight>true</blockLight>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<statBases>
+			<WorkToMake>400</WorkToMake>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<description>A simple vent for equalizing the temperature between two rooms without allowing people to walk between them.</description>
+		<costList>
+			<Steel>30</Steel>
+		</costList>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<comps>
+			<li Class="CommunityCoreLibrary.CompProperties_RestrictedPlacement">
+				<compClass>CommunityCoreLibrary.CompRestrictedPlacement</compClass>
+				<thingDefs>
+					<li>Wall</li>
+				</thingDefs>
+			</li>
+		</comps>
+		 <placeWorkers>
+			<!--<li>PlaceWorker_Cooler</li>-->
+			<li>CommunityCoreLibrary.PlaceWorker_OnlyOnThing</li>
+			<li>RedistHeat.PlaceWorker_WallChecker</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<building>
+			<canPlaceOverWall>true</canPlaceOverWall>
+			<isEdifice>false</isEdifice>
+		</building>
+		<designationCategory>Temperature</designationCategory>
+		<designationHotKey>N</designationHotKey>
+	</ThingDef>
+
+	
+	
+	<ThingDef ParentName="BetterVentBase">
+		<defName>PoweredVent</defName>
+		<label>PoweredVent</label>
+		<thingClass>Enhanced_Development.Temperature.Building_PoweredVent</thingClass>
+		<statBases>
+			<WorkToMake>600</WorkToMake>
+		</statBases>
+		<description>A simple vent for equalizing the temperature between two rooms without allowing people to walk between them.</description>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>100</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_Vent</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<designationHotKey>M</designationHotKey>
+	</ThingDef>
+
+</Defs>
