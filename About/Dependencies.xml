@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModDependencieMetaData>
+  <Dependencies>
+	<Dependency>
+		<DiskName>BetterVents-BetterVents1.1</DiskName>
+		<Description></Description>
+		<Url></Url>
+	</Dependency>
+	<Dependency>
+		<DiskName>ED-PoweredVent</DiskName>
+		<Description></Description>
+		<Url></Url>
+	</Dependency>
+  </Dependencies>
+</ModDependencieMetaData>
